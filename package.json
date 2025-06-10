@@ -1,0 +1,16 @@
+{
+  "name": "amazon-automation",
+  "version": "1.0.0",
+  "description": "Automação de teste para validação do carrinho de compras na Amazon Brasil usando Cypress e Cucumber",
+  "scripts": {
+    "test": "cypress open",
+    "test:headless": "cypress run"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.0.0",
+    "cypress": "^12.0.0"
+  },
+  "devDependencies": {
+    "@cucumber/messages": "^20.1.0"
+  }
+}
