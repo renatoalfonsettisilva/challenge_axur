@@ -1,4 +1,4 @@
-Shopping Cart Automation - Amazonas
+Shopping Cart Automation - Amazon Brazil
 
 Technologies Used
 - Cypress (end-to-end test automation framework)
