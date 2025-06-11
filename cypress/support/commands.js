@@ -10,45 +10,45 @@ const cartPage = new CartPage();
 
 let productPrice = 0;
 
-Given('que acesso a página inicial da Amazon', () => {
-  cy.visit('/');
+Given('which accesses the Amazon home page', () => {
+cy.visit('/');
 });
 
-When('pesquiso pelo produto {string}', (produto) => {
-  homePage.searchProduto(produto);
+When('search for product {string}', (product) => {
+homePage.searchProduct(product);
 });
 
-When('adiciono o primeiro produto exibido ao carrinho', () => {
-  searchResults.pegarPrecoPrimeiroProduto().then((preco) => {
-    productPrice = preco;
-    searchResults.adicionarPrimeiroProdutoAoCarrinho();
-  });
+When('I add the first displayed product to the cart', () => {
+searchResults.getFirstProductPrice().then((price) => {
+productPrice = price;
+searchResults. addFirstProductToCart();
+});
 });
 
-When('vou para o carrinho de compras', () => {
-  cartPage.acessarCarrinho();
+When('I go to the shopping cart', () => {
+cartPage.accessCart();
 });
 
-Then('valido que o preço no carrinho corresponde ao preço do produto adicionado', () => {
-  cartPage.validarPrecoProduto(productPrice);
+Then('I validate that the price in the cart matches the price of the added product', () => {
+cartPage.validateProductPrice(productPrice);
 });
 
-When('aumento a quantidade para {int} unidades', (quantidade) => {
-  cartPage.alterarQuantidade(quantidade);
+When('I increase the quantity to {int} units', (quantity) => {
+cartPage.changeQuantity(quantity);
 });
 
-Then('valido que a quantidade foi atualizada corretamente', () => {
-  cartPage.validarQuantidade(2);
+Then('I validate that the quantity was updated correctly', () => {
+cartPage.validateQuantity(2);
 });
 
-Then('valido que o subtotal está correto', () => {
-  cartPage.validarSubtotal(2, productPrice);
+Then('I validate that the subtotal is correct', () => {
+cartPage.validateSubtotal(2, productPrice);
 });
 
-When('tento alterar a quantidade para 0', () => {
-  cartPage.alterarQuantidade(0);
+When('I try to change the quantity to 0', () => {
+cartPage.changeQuantity(0);
 });
 
-Then('valido que a quantidade não foi alterada para zero', () => {
-  cartPage.validarQuantidadeDiferenteDeZero();
+Then('I validate that the quantity was not changed to zero', () => {
+cartPage.validateQuantityDifferentFromZero();
 });
