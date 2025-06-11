@@ -1,6 +1,6 @@
 class HomePage {
-  searchProduto(produto) {
-    cy.get('#twotabsearchtextbox').clear().type(produto);
+  searchProduct(product) {
+    cy.get('#twotabsearchtextbox').clear().type(product);
     cy.get('#nav-search-submit-button').click();
   }
 }
