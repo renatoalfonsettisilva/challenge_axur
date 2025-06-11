@@ -1,32 +1,32 @@
 class CartPage {
-  acessarCarrinho() {
+  accessCart() {
     cy.get('#nav-cart-count').click();
   }
 
-  validarPrecoProduto(precoEsperado) {
+  validateProductPrice(ExpectedPrice) {
     cy.get('.sc-list-item-content .sc-product-price').first().invoke('text').then((text) => {
-      const precoCarrinho = parseFloat(text.replace('R$', '').replace('.', '').replace(',', '.').trim());
-      expect(precoCarrinho).to.be.closeTo(precoEsperado, 0.05);
+      const cartPrice = parseFloat(text.replace('R$', '').replace('.', '').replace(',', '.').trim());
+      expect(cartPrice).to.be.closeTo(ExpectedPrice, 0.05);
     });
   }
 
-  alterarQuantidade(qtd) {
-    cy.get('select[name="quantity"]').first().select(qtd.toString());
+  changeQuantity(qtt) {
+    cy.get('select[name="quantity"]').first().select(qtt.toString());
   }
 
-  validarQuantidade(qtdEsperada) {
-    cy.get('select[name="quantity"]').first().should('have.value', qtdEsperada.toString());
+  validateQuantity(expectedQtt) {
+    cy.get('select[name="quantity"]').first().should('have.value', expectedQtt.toString());
   }
 
-  validarSubtotal(qtd, precoUnitario) {
+  validateSubtotal(qtt, unitPrice) {
     cy.get('#sc-subtotal-amount-activecart span').invoke('text').then((text) => {
       const subtotal = parseFloat(text.replace('R$', '').replace('.', '').replace(',', '.').trim());
-      const esperado = qtd * precoUnitario;
-      expect(subtotal).to.be.closeTo(esperado, 0.10);
+      const expected = qtd * unitPrice;
+      expect(subtotal).to.be.closeTo(expected, 0.10);
     });
   }
 
-  validarQuantidadeDiferenteDeZero() {
+  validateNonZeroQuantity() {
     cy.get('select[name="quantity"]').first().invoke('val').then((val) => {
       expect(parseInt(val)).to.be.greaterThan(0);
     });
