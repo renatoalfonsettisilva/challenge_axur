@@ -1,39 +1,33 @@
-# Automação do Carrinho de Compras - Amazon Brasil
+Shopping Cart Automation - Amazonas
 
-## Tecnologias Utilizadas
+Technologies Used
+- Cypress (end-to-end test automation framework)
+- Cucumber (BDD with `.feature` files for scenarios in Gherkin)
+- JavaScript (language chosen for its simplicity and wide adoption)
 
-- Cypress (framework de automação de testes end-to-end)
-- Cucumber (BDD com arquivos `.feature` para cenários em Gherkin)
-- JavaScript (linguagem escolhida pela simplicidade e ampla adoção)
+Project Structure
+- `cypress/e2e`: `.feature` files with BDD scenarios
+- `cypress/pages`: Pages implemented in Page Object Model to facilitate maintenance and reuse
+- `cypress/support`: Cypress global commands and configurations
+- `cypress.config.js`: Cypress configuration
+- `package.json`: Dependencies and scripts to run the tests
 
-## Estrutura do Projeto
+How to Run
+1. Install Node.js (recommended version >=14)
+2. Run `npm install` to install dependencies
+3. To open the Cypress UI and run the tests manually: markdown
+4. To run tests in headless mode (command line): npm run test
 
-- `cypress/e2e`: Arquivos `.feature` com cenários BDD
-- `cypress/pages`: Páginas implementadas em Page Object Model para facilitar manutenção e reuso
-- `cypress/support`: Comandos e configurações globais do Cypress
-- `cypress.config.js`: Configuração do Cypress
-- `package.json`: Dependências e scripts para rodar os testes
+Automation Strategy
+- Use of Cypress for ease and robustness in web testing, native support for automatic waiting and handling of dynamic elements.
+- Cucumber to create tests in natural language and facilitate understanding and maintenance.
+- Page Object Model to encapsulate selectors and actions per page, making the code more organized and reusable.
+- Dynamic capture of the product price to ensure that cart validation is always accurate, regardless of the product.
+- Inclusion of a negative scenario to test behavior in unexpected situations (changing quantity to zero).
+- Standard Cypress reports can be generated for post-execution analysis.
 
-## Como Executar
-
-1. Instale o Node.js (versão recomendada >=14)
-2. Rode `npm install` para instalar as dependências
-3. Para abrir o Cypress UI e executar os testes manualmente: markdown
-4. Para rodar os testes em modo headless (linha de comando): npm run test
-
-   ## Estratégia de Automação
-
-- Uso do Cypress pela facilidade e robustez em testes web, suporte nativo para espera automática e manipulação de elementos dinâmicos.
-- Cucumber para criar testes em linguagem natural e facilitar entendimento e manutenção.
-- Page Object Model para encapsular seletores e ações por página, tornando o código mais organizado e reutilizável.
-- Captura dinâmica do preço do produto para garantir que a validação do carrinho seja sempre precisa, independente do produto.
-- Inclusão de cenário negativo para testar comportamento em situação inesperada (alterar quantidade para zero).
-- Relatórios padrão do Cypress podem ser gerados para análise pós-execução.
-
-## Limitações
-
-- Como o site da Amazon pode mudar sua estrutura a qualquer momento, seletores podem quebrar.
-- Testes dependem da disponibilidade do produto escolhido.
-- Testes não fazem login, limitando validações que requerem autenticação.
-- O pop-up pós adição ao carrinho pode variar conforme a região e versão do site.
-
+Limitations
+- Since the Amazon website can change its structure at any time, selectors can break.
+- Tests depend on the availability of the chosen product.
+- Tests do not log in, limiting validations that require authentication.
+- The post-add-to-cart pop-up may vary according to the region and version of the website.
